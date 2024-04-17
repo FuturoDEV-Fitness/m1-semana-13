@@ -3,6 +3,7 @@ import "./App.css";
 import ShopCart from "./components/pages/ShopCart";
 import ProductsList from "./components/pages/ProductsList";
 import CounterHook from "./components/pages/CounterHook";
+import AllContextsProvider from "./contexts";
 
 function App() {
  const router = createBrowserRouter([
@@ -20,7 +21,11 @@ function App() {
   }
  ]);
 
- return <RouterProvider router={router} />;
+ return (
+  <AllContextsProvider>
+   <RouterProvider router={router} />
+  </AllContextsProvider>
+ );
 }
 
 export default App;

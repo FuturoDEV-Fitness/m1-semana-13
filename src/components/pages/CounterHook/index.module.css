@@ -3,6 +3,8 @@
  flex-direction: column;
  align-items: center;
 
+ /* DISPOSITIVOS MÓVEIS SÃO PRIORIDADE - MOBILE FIRST */
+
  padding: 1rem;
  gap: 1rem;
 }
@@ -17,4 +19,27 @@
  background-color: rgb(53, 53, 53);
  padding: 1rem;
  border-radius: 0.5rem;
+}
+
+/* 
+max-width: Largura máxima da janela de visualização (monitor) / TELAS QUE TENHAM NO MÍNIMO X PIXEIS
+min-width: Largura mínima da janela de visualização (monitor) / TELAS QUE TENHAM NO MÁXIMO X PIXEIS
+*/
+
+/* @media: usado para criar um estilo especifico para um tamanho de tela */
+
+/* aplica os estilos definidos somente para telas com mais de 767px de largura (tablet) */
+@media (min-width: 767px) {
+ .content {
+  display: grid;
+  grid-template-columns: auto auto;
+ }
+}
+
+/* aplica os estilos definidos somente para telas com mais de 1023px de largura (desktop) */
+@media (min-width: 1439px) {
+ .content {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+ }
 }
