@@ -14,6 +14,12 @@ export const ProductsContext = createContext();
 function ProductsContextProvider({ children }) {
  //  Criação do estado para guardar os itens do carrinho
  const [cartItems, setCartItems] = useState([]);
+ //  ETAPA 1 - LISTA A PARTIR DO FORM: criar estado
+ const [productsList, setProductsList] = useState([
+  { id: 1, name: "Macarrão", price: 5.99 },
+  { id: 1, name: "Maionese", price: 10.99 },
+  { id: 1, name: "Energético", price: 7.99 }
+ ]);
 
  //  Criação de uma função para cuidar da lógica de adicionar um item ao carrinho
  function addToCart(product) {
@@ -26,9 +32,16 @@ function ProductsContextProvider({ children }) {
   setCartItems([]);
  }
 
+ //  ETAPA 2 - LISTA A PARTIR DO FORM: função que adicionar o novo produto na listagem
+ function addProductToList(product) {
+  setProductsList((p) => [...p, { ...product, id: p.length + 1 }]);
+ }
+
  return (
-  // Faço referência a const que guarda o contexto para acessar seu Provider e passar os valores que serão disponibilizados no contexto
-  <ProductsContext.Provider value={{ cartItems, addToCart, cleanCart }}>
+  //  ETAPA 3 - LISTA A PARTIR DO FORM: Disponibilizar função e estado nos valores do contexto
+  // ProductsContext.Provider: Faço referência a const que guarda o contexto para acessar seu Provider e passar os valores que serão disponibilizados no contexto
+  <ProductsContext.Provider
+   value={{ cartItems, addToCart, cleanCart, addProductToList, productsList }}>
    {children}
   </ProductsContext.Provider>
  );
